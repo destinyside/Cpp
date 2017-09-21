@@ -45,45 +45,6 @@ public:
 		return node->parent->parent;
 	}
 
-	void insertNode(RBTreeNode* &root, int value) {
-		RBTreeNode* node = new RBTreeNode(value);
-		if (root == NULL) {
-			root = node;
-			head = root;
-		}
-		else {
-			RBTreeNode* tmp = root;
-			while (tmp) {
-				if (node->data > tmp->data) {
-					if (tmp->right == NULL) {
-						tmp->right = node;
-						node->parent = tmp;
-						break;
-					}
-					else {
-						tmp = tmp->right;
-					}
-				}
-				else if (node->data == tmp->data) {
-					//insertCase(tmp);
-				}
-				else {
-					if (tmp->left == NULL) {
-						tmp->left = node;
-						node->parent = tmp;
-						break;
-					}
-					else {
-						tmp = tmp->left;
-					}
-				}
-			}
-		}
-		insertCase(node);
-		root = head;
-		root->color = Black;
-	}
-
 	void leftRotate(RBTreeNode* &node) {
 		if (node != NULL) {
 			RBTreeNode* rc = node->right;
@@ -140,12 +101,51 @@ public:
 		}
 	}
 
+	void insertNode(RBTreeNode* &root, int value) {
+		RBTreeNode* node = new RBTreeNode(value);
+		if (root == NULL) {
+			root = node;
+			head = root;
+		}
+		else {
+			RBTreeNode* tmp = root;
+			while (tmp) {
+				if (node->data > tmp->data) {
+					if (tmp->right == NULL) {
+						tmp->right = node;
+						node->parent = tmp;
+						break;
+					}
+					else {
+						tmp = tmp->right;
+					}
+				}
+				else if (node->data == tmp->data) {
+					//insertCase(tmp);
+				}
+				else {
+					if (tmp->left == NULL) {
+						tmp->left = node;
+						node->parent = tmp;
+						break;
+					}
+					else {
+						tmp = tmp->left;
+					}
+				}
+			}
+		}
+		insertCase(node);
+		root = head;
+		root->color = Black;
+	}
+
 	void insertCase(RBTreeNode* &node){
 
 		//自底向上修改颜色
 
 		while ((node != NULL) && (node->parent != NULL) && (node->parent->color == Red)) {
-			cout << node->data << " ";
+			//cout << node->data << " ";
 			if (node->parent == getGrandParent(node)->left) {
 				if (getUncle(node) != NULL&&getUncle(node)->color == Red) {
 					//红父红叔，设置父叔为黑色，设置祖父为红色
@@ -187,9 +187,19 @@ public:
 			}
 		}
 	}
+
+	RBTreeNode* midAfter(RBTreeNode* node) {
+
+	}
+
 	void deleteNode(RBTreeNode* root, int key) {
 
 	}
+
+	void deleteCase(RBTreeNode* &node) {
+
+	}
+
 	void deleteAll(RBTreeNode* node) {
 		if (node != NULL) {
 			deleteAll(node->left);
@@ -197,6 +207,7 @@ public:
 			delete node;
 		}
 	}
+
 	void printTree(RBTreeNode* node) {
 		if (node != NULL) {
 			cout << node->data << " ";
@@ -211,6 +222,7 @@ public:
 			printTree(node->right);
 		}
 	}
+
 	void prePrint(RBTreeNode* node) {
 		if (node != NULL) {
 			cout << node->data << " ";
@@ -218,6 +230,7 @@ public:
 			prePrint(node->right);
 		}
 	}
+
 	void midPrint(RBTreeNode* node) {
 		if (node != NULL) {
 			midPrint(node->left);
@@ -225,6 +238,7 @@ public:
 			midPrint(node->right);
 		}
 	}
+
 	void postPrint(RBTreeNode* node) {
 		if (node != NULL) {
 			postPrint(node->left);
@@ -270,6 +284,7 @@ int main() {
 	tree->midPrint(root);
 	cout << endl;
 	tree->postPrint(root);
+	cout << endl;
 	tree->deleteAll(root);
 	delete tree;
 	system("pause");
