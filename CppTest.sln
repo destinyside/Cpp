@@ -59,6 +59,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DAMergeSort", "DAMergeSort\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DAHeapSort", "DAHeapSort\DAHeapSort.vcxproj", "{74C1A30B-6A73-4F7B-AEC3-84264BB98D23}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIBPNN", "AIBPNN\AIBPNN.vcxproj", "{575CEB98-B90C-4892-A904-7CD6B65D21AC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DAHanoiTower", "DAHanoiTower\DAHanoiTower.vcxproj", "{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -349,6 +353,26 @@ Global
 		{74C1A30B-6A73-4F7B-AEC3-84264BB98D23}.Release|x64.Build.0 = Release|x64
 		{74C1A30B-6A73-4F7B-AEC3-84264BB98D23}.Release|x86.ActiveCfg = Release|Win32
 		{74C1A30B-6A73-4F7B-AEC3-84264BB98D23}.Release|x86.Build.0 = Release|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Debug|x64.ActiveCfg = Debug|x64
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Debug|x64.Build.0 = Debug|x64
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Debug|x86.ActiveCfg = Debug|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Debug|x86.Build.0 = Debug|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Release|Any CPU.ActiveCfg = Release|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Release|x64.ActiveCfg = Release|x64
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Release|x64.Build.0 = Release|x64
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Release|x86.ActiveCfg = Release|Win32
+		{575CEB98-B90C-4892-A904-7CD6B65D21AC}.Release|x86.Build.0 = Release|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Debug|x64.ActiveCfg = Debug|x64
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Debug|x64.Build.0 = Debug|x64
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Debug|x86.ActiveCfg = Debug|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Debug|x86.Build.0 = Debug|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Release|Any CPU.ActiveCfg = Release|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Release|x64.ActiveCfg = Release|x64
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Release|x64.Build.0 = Release|x64
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Release|x86.ActiveCfg = Release|Win32
+		{96EE631B-2F5E-495B-82AB-AD2FA1E725E3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
