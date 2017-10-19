@@ -13,7 +13,7 @@ PublicNumber::PublicNumber(char* name)
 }
 PublicNumber::~PublicNumber()
 {
-	for each (Observer* o in this->OList) 
+	for(Observer* o : this->OList) 
 	{
 		delete o;
 	}
@@ -31,7 +31,7 @@ void PublicNumber::RemoveObserver(Observer* o)
 
 void PublicNumber::Notify(char* story)
 {
-	for each (Observer* o in this->OList)
+	for(Observer* o : this->OList)
 	{
 		o->update(story);
 	}

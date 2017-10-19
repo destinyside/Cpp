@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cstdlib>
 #include "Observer.h"
 #include "PublicNumber.h"
 #include "Subject.h"
