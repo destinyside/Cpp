@@ -4,22 +4,26 @@ using namespace std;
 
 //任何一非叶节点的关键字不大于或者不小于其左右孩子节点的关键字。
 
-void HeapAdjust(int* &arr, int start, int end) {
-	int tmp = arr[start];
-	
-	for (int i = 2 * start + 1; i <= end; i *= 2) {
-		//因为假设根结点的序号为0而不是1，所以i结点左孩子和右孩子分别为2i+1和2i+2
-		if ((i < end) && (arr[i] <= arr[i + 1])) {//左右孩子的比较
-			i++;//i为较大的记录的下标
+void HeapAdjust(int* &a, int i, int size)  {//调整堆  
+	int lchild = 2 * i;       //i的左孩子节点序号 
+	int rchild = 2 * i + 1;     //i的右孩子节点序号 
+	int max = i;            //临时变量 
+	if (i <= size / 2)          //如果i不是叶节点就不用进行调整 
+	{
+		if (lchild <= size&&a[lchild]>a[max])
+		{
+			max = lchild;
 		}
-		if (tmp > arr[i]) {//左右孩子中获胜者与父亲的比较
-			break;
+		if (rchild <= size&&a[rchild]>a[max])
+		{
+			max = rchild;
 		}
-		//将孩子结点上位，则以孩子结点的位置进行下一轮的筛选
-		arr[start] = arr[i];
-		start = i;
+		if (max != i)
+		{
+			swap(a[i], a[max]);
+			HeapAdjust(a, max, size);    //避免调整之后以max为父节点的子树不是堆 
+		}
 	}
-	arr[start] = tmp;//插入最开始不和谐的元素
 }
 
 void HeapSort(int* &a, int n)
@@ -30,7 +34,7 @@ void HeapSort(int* &a, int n)
 		HeapAdjust(a, i, n);
 	}
 	////进行排序
-	for (int i = n - 1; i > 0; --i)
+	for (int i = n-1; i > 0; --i)
 	{
 		//最后一个元素和第一元素进行交换
 		int temp = a[i];
@@ -56,11 +60,16 @@ int* randomArray(int len) {
 
 int main() {
 	int len = 10;
-	int* arr = randomArray(len);
+	int* arr = randomArray(len); //new int[len] {7,7,0,9,1,7,2,9,9,1};
+	for (int i = 0; i < len; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 	HeapSort(arr, len);
 	for (int i = 0; i < len; i++) {
 		cout << arr[i] << " ";
 	}
+	cout << endl;
 	delete[] arr;
 	system("pause");
 }

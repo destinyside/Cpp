@@ -6,18 +6,16 @@ void quicksort(int* &p, int left, int right) {
 	if (left > right) {
 		return;
 	}
-	int sign = p[left];
+	int sign = p[left];//选择基准
 	int i = left;
 	int j = right;
 	while (i != j) {
-		while (sign <= p[j] && i < j) {
-			j--;
-		}
-
 		while (sign >= p[i] && i < j) {
 			//遇到不满足的数就停止循环，接着进行交换
-
 			i++;
+		}
+		while (sign < p[j] && i < j) {
+			j--;
 		}
 
 		if (i < j) {
@@ -25,7 +23,9 @@ void quicksort(int* &p, int left, int right) {
 			p[i] = p[j];
 			p[j] = tmp;
 		}
+
 	}
+
 	int tmp = p[i];
 	p[i] = p[left];
 	p[left] = tmp;
@@ -47,7 +47,7 @@ int* randomArray(int len) {
 }
 
 int main() {
-	int len = 20;
+	int len = 5;
 	int *arr = randomArray(len);
 	quicksort(arr, 0, len-1);
 	for (int i = 0; i < len; i++) {

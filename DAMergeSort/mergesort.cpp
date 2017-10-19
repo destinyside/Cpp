@@ -65,14 +65,15 @@ int* randomArray(int len) {
 	return tmp;
 }
 int main() {
-	int len = 20;
+	int len = 10;
 	int step = 1;
-	int* arr = randomArray(len);
-	//cout << "Array : ";
-	//for (int i = 0; i < len; i++) {
-	//	cout << arr[i] << " ";
-	//}
-	//cout << endl;
+	//int* arr = randomArray(len);
+	int* arr = new int[len] {1, 6, 0, 3, 3, 8, 2, 4, 1, 1};
+	cout << "Array : ";
+	for (int i = 0; i < len; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 
 	clock_t start = clock();
 
@@ -82,10 +83,10 @@ int main() {
 
 	cout << "Running Time : " << (double)(ends - start) / CLOCKS_PER_SEC << endl;
 
-	//cout << "Array : ";
-	//for (int i = 0; i < len; i++) {
-	//	cout << arr[i] << " ";
-	//}
+	cout << "Array : ";
+	for (int i = 0; i < len; i++) {
+		cout << arr[i] << " ";
+	}
 	cout << endl;
 	delete[] arr;
 	system("pause");
