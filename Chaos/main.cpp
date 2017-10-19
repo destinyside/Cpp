@@ -16,6 +16,9 @@ int main() {
 	//std::cout << i0 << i1 << i2 << i3 << i4 << *i1 << **i2 << ***i3 << ****i4 << std::endl;
 
 	std::cerr << "错误，自动引发的错误！" << std::endl;
+	int j = 0;
+	cout << (++ j) ++ << endl;
+	cout << j << endl;
 	int value, sum = 0;
 	while (std::cin>>value)//CTRL+Z 输入结束
 	{

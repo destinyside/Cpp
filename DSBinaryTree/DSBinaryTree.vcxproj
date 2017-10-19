@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{94D7DD8A-62C5-419D-877C-9AF1CE24103C}</ProjectGuid>
-    <RootNamespace>CppTest</RootNamespace>
+    <RootNamespace>DSBinaryTree</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>DSBinaryTree</ProjectName>
   </PropertyGroup>
