@@ -23,7 +23,7 @@ int main() {
 	vector<DataNode> testList = initTest();
 	AnnClassifier* annClassifier = new AnnClassifier(
 		trainList.at(0).getAttrList().size(), 
-		trainList.at(0).getAttrList().size() + 8, 
+		trainList.at(0).getAttrList().size() + 5, 
 		typeCount
 	);
 	annClassifier->setTrainNodes(trainList);
