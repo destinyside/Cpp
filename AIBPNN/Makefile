@@ -8,9 +8,9 @@ CC=g++
 CCFLAGS=--std=c++11
 LD=ld
 INCLUDE=-I./
-TARGET=DPObserver
+TARGET=AIBPNN
 
-objs=Client.cpp Observer.h Observer.cpp Subject.h Subject.cpp User.h User.cpp PublicNumber.h PublicNumber.cpp
+objs=Client.cpp AnnClassifier.h AnnClassifier.cpp DataNode.h DataNode.cpp Neuron.h Neuron.cpp 
 DPObserver: $(objs)
 	$(CC) $(CCFLAGS) -o $(TARGET) $(objs)
 

@@ -1,4 +1,5 @@
 #include "AnnClassifier.h"
+#include<stdlib.h>
 
 AnnClassifier::AnnClassifier(int inputCount, int hiddenCount, int outputCount)
 {
@@ -132,15 +133,15 @@ void AnnClassifier::reset()
 {
 	//list<Neuron*>::iterator iter = inputNodes.begin();
 
-	for each (Neuron* n in inputNodes)
+	for(Neuron* n : inputNodes)
 	{
 		delete n;
 	}
-	for each (Neuron* n in hiddenNodes)
+	for(Neuron* n : hiddenNodes)
 	{
 		delete n;
 	}
-	for each (Neuron* n in outputNodes)
+	for(Neuron* n : outputNodes)
 	{
 		delete n;
 	}
