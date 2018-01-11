@@ -11,7 +11,7 @@ INCLUDE=-I./
 TARGET=AIBPNN
 
 objs=Client.cpp AnnClassifier.h AnnClassifier.cpp DataNode.h DataNode.cpp Neuron.h Neuron.cpp 
-DPObserver: $(objs)
+AIBPNN: $(objs)
 	$(CC) $(CCFLAGS) -o $(TARGET) $(objs)
 
 clean:
