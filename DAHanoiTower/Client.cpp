@@ -15,22 +15,35 @@ void move(int n, char A, char B, char C) {
 int main(int argc, char** argv) {
     int step = 3;
     int ch = 0;
-    while((ch = getopt(argc, argv, "n:")) != -1){
+    bool run = false;
+    while((ch = getopt(argc, argv, "hn:")) != -1){
 	switch(ch){
+	    case 'h' : {
+			   cout<< "usage: -n step (-n 3), default 3"<<endl;
+			   run = false;
+			   break;
+		       }
 	    case 'n' : {
 			   step = atoi(optarg);
 			   cout<< "the step is " << step <<endl;
+			   run = true;
 			   break;
 		       }
 	    default : {
+			  cout<< "use -h for help" <<endl;
+			  run  = false;
 			  break;
 		      }
 	}
     }
-
-    char A = 'A';
-    char B = 'B';
-    char C = 'C';
-    move(step, A, B, C);
-    system("pause");
+    if(!run){
+	cout<< "use -h for help" <<endl;
+    }
+    if(run){
+	char A = 'A';
+	char B = 'B';
+	char C = 'C';
+	move(step, A, B, C);
+	system("pause");
+    }
 }
