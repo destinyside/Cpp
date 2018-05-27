@@ -8,9 +8,9 @@ CC=g++
 CCFLAGS=--std=c++11
 LD=ld
 INCLUDE=-I./
-TARGET=AIBPNN
+TARGET=HanoiTower
 
-objs=*.h *.cpp
+objs=*.cpp
 AIBPNN: $(objs)
 	$(CC) $(CCFLAGS) -o $(TARGET) $(objs)
 

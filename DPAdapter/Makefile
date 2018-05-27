@@ -8,7 +8,7 @@ CC=g++
 CCFLAGS=--std=c++11
 LD=ld
 INCLUDE=-I./
-TARGET=AIBPNN
+TARGET=DPAdapter
 
 objs=*.h *.cpp
 AIBPNN: $(objs)
