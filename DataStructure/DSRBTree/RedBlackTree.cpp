@@ -4,268 +4,273 @@ using namespace std;
 enum Color{Red,Black};
 
 class RBTreeNode {
-public:
-	Color color;
-	int data;
-	RBTreeNode* parent;
-	RBTreeNode* left;
-	RBTreeNode* right;
-	RBTreeNode(int value):color(Red),data(value),parent(NULL),left(NULL),right(NULL){}
+	public:
+		Color color;
+		int data;
+		RBTreeNode* parent;
+		RBTreeNode* left;
+		RBTreeNode* right;
+		RBTreeNode(int value):color(Red),data(value),parent(NULL),left(NULL),right(NULL){}
 };
 
 class RBTree {
 
 	/*
-	Ã¿¸ö½ÚµãÒªÃ´ÊÇºìµÄ£¬ÒªÃ´ÊÇºÚµÄ¡£
-	¸ù½ÚµãÊÇºÚµÄ¡£
-	Ã¿¸öÒ¶½Úµã£¨Ò¶½Úµã¼´Ö¸Ê÷Î²¶ËNILÖ¸Õë»òNULL½Úµã£©ÊÇºÚµÄ¡£
-	Èç¹ûÒ»¸ö½ÚµãÊÇºìµÄ£¬ÄÇÃ´ËüµÄÁ½¸ö¶ù×Ó¶¼ÊÇºÚµÄ¡£
-	¶ÔÓÚÈÎÒ»½Úµã¶øÑÔ£¬Æäµ½Ò¶½ÚµãÊ÷Î²¶ËNILÖ¸ÕëµÄÃ¿Ò»ÌõÂ·¾¶¶¼°üº¬ÏàÍ¬ÊýÄ¿µÄºÚ½Úµã¡£
-	*/
+	 * 	æ¯ä¸ªèŠ‚ç‚¹è¦ä¹ˆæ˜¯çº¢çš„ï¼Œè¦ä¹ˆæ˜¯é»‘çš„ã€‚
+	 * 	æ ¹èŠ‚ç‚¹æ˜¯é»‘çš„ã€‚
+	 * 	æ¯ä¸ªå¶èŠ‚ç‚¹ï¼ˆå¶èŠ‚ç‚¹å³æŒ‡æ ‘å°¾ç«¯NILæŒ‡é’ˆæˆ–NULLèŠ‚ç‚¹ï¼‰æ˜¯é»‘çš„ã€‚
+	 * 	å¦‚æžœä¸€ä¸ªèŠ‚ç‚¹æ˜¯çº¢çš„ï¼Œé‚£ä¹ˆå®ƒçš„ä¸¤ä¸ªå„¿å­éƒ½æ˜¯é»‘çš„ã€‚
+	 * 	å¯¹äºŽä»»ä¸€èŠ‚ç‚¹è€Œè¨€ï¼Œå…¶åˆ°å¶èŠ‚ç‚¹æ ‘å°¾ç«¯NILæŒ‡é’ˆçš„æ¯ä¸€æ¡è·¯å¾„éƒ½åŒ…å«ç›¸åŒæ•°ç›®çš„é»‘èŠ‚ç‚¹ã€‚
+	 * 	*/
 
-public:
-	RBTreeNode* head;
-	RBTree() {
 
-	}
-	RBTreeNode* getParent(RBTreeNode* node) {
-		return node->parent;
-	}
+	public:
+		RBTreeNode* head;
+		RBTree() {
 
-	RBTreeNode* getUncle(RBTreeNode* node) {
-		if (node->parent == getGrandParent(node)->left) {
-			return getGrandParent(node)->right;
 		}
-		else {
-			return getGrandParent(node)->left;
+		RBTreeNode* getParent(RBTreeNode* node) {
+			return node->parent;
 		}
-	}
 
-	RBTreeNode* getGrandParent(RBTreeNode* node) {
-		return node->parent->parent;
-	}
-
-	void leftRotate(RBTreeNode* &node) {
-		if (node != NULL) {
-			RBTreeNode* rc = node->right;
-			RBTreeNode* parent = node->parent;
-
-			node->right = rc->left;
-			if (rc->left != NULL) {
-				rc->left->parent = node;
-			}
-
-			rc->left = node;
-			node->parent = rc;
-
-			if (parent == NULL) {
-				head = rc;
-				parent = head;
-			}
-			else if (node == parent->left) {
-				parent->left = rc;
-				rc->parent = parent;
+		RBTreeNode* getUncle(RBTreeNode* node) {
+			if (node->parent == getGrandParent(node)->left) {
+				return getGrandParent(node)->right;
 			}
 			else {
-				parent->right = rc;
-				rc->parent = parent;
+				return getGrandParent(node)->left;
 			}
 		}
-	}
 
-	void rightRotate(RBTreeNode* &node) {
-		if (node != NULL) {
-			RBTreeNode* lc = node->left;
-			RBTreeNode* parent = node->parent;
-
-			node->left = lc->right;
-			if (lc->right != NULL) {
-				lc->right->parent = node;
-			}
-
-			lc->right = node;
-			node->parent = lc;
-
-			if (parent == NULL) {
-				head = lc;
-				parent = head;
-			}
-			else if (node == parent->left) {
-				parent->left = lc;
-				lc->parent = parent;
-			}
-			else {
-				parent->right = lc;
-				lc->parent = parent;
-			}
+		RBTreeNode* getGrandParent(RBTreeNode* node) {
+			return node->parent->parent;
 		}
-	}
 
-	void insertNode(RBTreeNode* &root, int value) {
-		RBTreeNode* node = new RBTreeNode(value);
-		if (root == NULL) {
-			root = node;
-			head = root;
-		}
-		else {
-			RBTreeNode* tmp = root;
-			while (tmp) {
-				if (node->data > tmp->data) {
-					if (tmp->right == NULL) {
-						tmp->right = node;
-						node->parent = tmp;
-						break;
-					}
-					else {
-						tmp = tmp->right;
-					}
+		void leftRotate(RBTreeNode* &node) {
+			if (node != NULL) {
+				RBTreeNode* rc = node->right;
+				RBTreeNode* parent = node->parent;
+
+				node->right = rc->left;
+				if (rc->left != NULL) {
+					rc->left->parent = node;
 				}
-				else if (node->data == tmp->data) {
-					//insertCase(tmp);
+
+				rc->left = node;
+				node->parent = rc;
+
+				if (parent == NULL) {
+					head = rc;
+					parent = head;
+				}
+				else if (node == parent->left) {
+					parent->left = rc;
+					rc->parent = parent;
 				}
 				else {
-					if (tmp->left == NULL) {
-						tmp->left = node;
-						node->parent = tmp;
-						break;
-					}
-					else {
-						tmp = tmp->left;
-					}
+					parent->right = rc;
+					rc->parent = parent;
 				}
 			}
 		}
-		insertCase(node);
-		root = head;
-		root->color = Black;
-	}
 
-	void insertCase(RBTreeNode* &node){
+		void rightRotate(RBTreeNode* &node) {
+			if (node != NULL) {
+				RBTreeNode* lc = node->left;
+				RBTreeNode* parent = node->parent;
 
-		//×Ôµ×ÏòÉÏÐÞ¸ÄÑÕÉ«
-
-		while ((node != NULL) && (node->parent != NULL) && (node->parent->color == Red)) {
-			//cout << node->data << " ";
-			if (node->parent == getGrandParent(node)->left) {
-				if (getUncle(node) != NULL&&getUncle(node)->color == Red) {
-					//ºì¸¸ºìÊå£¬ÉèÖÃ¸¸ÊåÎªºÚÉ«£¬ÉèÖÃ×æ¸¸ÎªºìÉ«
-					node->parent->color = Black;
-					getUncle(node)->color = Black;
-					getGrandParent(node)->color = Red;
-					node = getGrandParent(node);
+				node->left = lc->right;
+				if (lc->right != NULL) {
+					lc->right->parent = node;
 				}
-				else {//ºì¸¸ºÚÊå
-					if (node == node->parent->right) {
-						//node½ÚµãÎªÓÒ×Ó½Úµã
-						node = node->parent;
-						leftRotate(node);
-					}
-					node->parent->color = Black;
-					getGrandParent(node)->color = Red;
-					rightRotate(node->parent->parent);
+
+				lc->right = node;
+				node->parent = lc;
+
+				if (parent == NULL) {
+					head = lc;
+					parent = head;
 				}
+				else if (node == parent->left) {
+					parent->left = lc;
+					lc->parent = parent;
+				}
+				else {
+					parent->right = lc;
+					lc->parent = parent;
+				}
+			}
+		}
+
+		void insertNode(RBTreeNode* &root, int value) {
+			RBTreeNode* node = new RBTreeNode(value);
+			if (root == NULL) {
+				root = node;
+				head = root;
 			}
 			else {
-				//¶Ô³Æ
-				if (getUncle(node) != NULL&&getUncle(node)->color == Red) {
-					//ºì¸¸ºìÊå£¬ÉèÖÃ¸¸ÊåÎªºÚÉ«£¬ÉèÖÃ×æ¸¸ÎªºìÉ«
-					node->parent->color = Black;
-					getUncle(node)->color = Black;
-					getGrandParent(node)->color = Red;
-					node = getGrandParent(node);
-				}
-				else {//ºì¸¸ºÚÊå
-					if (node == node->parent->left) {
-						//node½ÚµãÎª×ó×Ó½Úµã
-						node = node->parent;
-						rightRotate(node);
+				RBTreeNode* tmp = root;
+				while (tmp) {
+					if (node->data > tmp->data) {
+						if (tmp->right == NULL) {
+							tmp->right = node;
+							node->parent = tmp;
+							break;
+						}
+						else {
+							tmp = tmp->right;
+						}
 					}
-					node->parent->color = Black;
-					getGrandParent(node)->color = Red;
-					leftRotate(node->parent->parent);
+					else if (node->data == tmp->data) {
+						//insertCase(tmp);
+					}
+					else {
+						if (tmp->left == NULL) {
+							tmp->left = node;
+							node->parent = tmp;
+							break;
+						}
+						else {
+							tmp = tmp->left;
+						}
+					}
+				}
+			}
+			insertCase(node);
+			root = head;
+			root->color = Black;
+		}
+
+		void insertCase(RBTreeNode* &node){
+			//è‡ªåº•å‘ä¸Šä¿®æ”¹é¢œè‰²
+
+			while ((node != NULL) && (node->parent != NULL) && (node->parent->color == Red)) {
+				//cout << node->data << " ";
+				if (node->parent == getGrandParent(node)->left) {
+					if (getUncle(node) != NULL&&getUncle(node)->color == Red) {
+						//çº¢çˆ¶çº¢å”ï¼Œè®¾ç½®çˆ¶å”ä¸ºé»‘è‰²ï¼Œè®¾ç½®ç¥–çˆ¶ä¸ºçº¢è‰²
+						//
+						node->parent->color = Black;
+						getUncle(node)->color = Black;
+						getGrandParent(node)->color = Red;
+						node = getGrandParent(node);
+					}
+					else {//çº¢çˆ¶é»‘å”
+
+						if (node == node->parent->right) {
+							//nodeèŠ‚ç‚¹ä¸ºå³å­èŠ‚ç‚¹
+							//
+							node = node->parent;
+							leftRotate(node);
+						}
+						node->parent->color = Black;
+						getGrandParent(node)->color = Red;
+						rightRotate(node->parent->parent);
+					}
+				}
+				else {
+					//å¯¹ç§°
+					if (getUncle(node) != NULL&&getUncle(node)->color == Red) {
+						//çº¢çˆ¶çº¢å”ï¼Œè®¾ç½®çˆ¶å”ä¸ºé»‘è‰²ï¼Œè®¾ç½®ç¥–çˆ¶ä¸ºçº¢è‰²
+						node->parent->color = Black;
+						getUncle(node)->color = Black;
+						getGrandParent(node)->color = Red;
+						node = getGrandParent(node);
+					}
+					else {//çº¢çˆ¶é»‘å”
+
+						if (node == node->parent->left) {
+							//nodeèŠ‚ç‚¹ä¸ºå·¦å­èŠ‚ç‚¹
+							//
+							node = node->parent;
+							rightRotate(node);
+						}
+						node->parent->color = Black;
+						getGrandParent(node)->color = Red;
+						leftRotate(node->parent->parent);
+					}
 				}
 			}
 		}
-	}
 
-	RBTreeNode* midAfter(RBTreeNode* node) {
+		RBTreeNode* midAfter(RBTreeNode* node) {
 
-	}
-
-	void deleteNode(RBTreeNode* root, int key) {
-
-	}
-
-	void deleteCase(RBTreeNode* &node) {
-
-	}
-
-	void deleteAll(RBTreeNode* node) {
-		if (node != NULL) {
-			deleteAll(node->left);
-			deleteAll(node->right);
-			delete node;
 		}
-	}
 
-	void printTree(RBTreeNode* node) {
-		if (node != NULL) {
-			cout << node->data << " ";
-			cout << node->color << endl;
-			if (node->left != NULL) {
-				cout << " left child : " << node->left->data << endl;
+		void deleteNode(RBTreeNode* root, int key) {
+
+		}
+
+		void deleteCase(RBTreeNode* &node) {
+
+		}
+
+		void deleteAll(RBTreeNode* node) {
+			if (node != NULL) {
+				deleteAll(node->left);
+				deleteAll(node->right);
+				delete node;
 			}
-			if (node->right != NULL) {
-				cout << "right child : " << node->right->data << endl;
+		}
+
+		void printTree(RBTreeNode* node) {
+			if (node != NULL) {
+				cout << node->data << " ";
+				cout << node->color << endl;
+				if (node->left != NULL) {
+					cout << " left child : " << node->left->data << endl;
+				}
+				if (node->right != NULL) {
+					cout << "right child : " << node->right->data << endl;
+				}
+				printTree(node->left);
+				printTree(node->right);
 			}
-			printTree(node->left);
-			printTree(node->right);
 		}
-	}
 
-	void prePrint(RBTreeNode* node) {
-		if (node != NULL) {
-			cout << node->data << " ";
-			prePrint(node->left);
-			prePrint(node->right);
+		void prePrint(RBTreeNode* node) {
+			if (node != NULL) {
+				cout << node->data << " ";
+				prePrint(node->left);
+				prePrint(node->right);
+			}
 		}
-	}
 
-	void midPrint(RBTreeNode* node) {
-		if (node != NULL) {
-			midPrint(node->left);
-			cout << node->data << " ";
-			midPrint(node->right);
+		void midPrint(RBTreeNode* node) {
+			if (node != NULL) {
+				midPrint(node->left);
+				cout << node->data << " ";
+				midPrint(node->right);
+			}
 		}
-	}
 
-	void postPrint(RBTreeNode* node) {
-		if (node != NULL) {
-			postPrint(node->left);
-			postPrint(node->right);
-			cout << node->data << " ";
+		void postPrint(RBTreeNode* node) {
+			if (node != NULL) {
+				postPrint(node->left);
+				postPrint(node->right);
+				cout << node->data << " ";
+			}
 		}
-	}
 };
 int main() {
 	/*
-== Ô­Ê¼Êý¾Ý: 10 40 30 60 90 70 20 50 80 
-== Ç°Ðò±éÀú: 30 10 20 60 40 50 80 70 90 
-== ÖÐÐò±éÀú: 10 20 30 40 50 60 70 80 90 
-== ºóÐò±éÀú: 20 10 50 40 70 90 80 60 30 
-== ×îÐ¡Öµ: 10
-== ×î´óÖµ: 90
-== Ê÷µÄÏêÏ¸ÐÅÏ¢: 
-30(B) is root
-10(B) is 30's   left child
-20(R) is 10's  right child
-60(R) is 30's  right child
-40(B) is 60's   left child
-50(R) is 40's  right child
-80(B) is 60's  right child
-70(R) is 80's   left child
-90(R) is 80's  right child
-	*/
+	 * == åŽŸå§‹æ•°æ®: 10 40 30 60 90 70 20 50 80 
+	 * == å‰åºéåŽ†: 30 10 20 60 40 50 80 70 90 
+	 * == ä¸­åºéåŽ†: 10 20 30 40 50 60 70 80 90 
+	 * == åŽåºéåŽ†: 20 10 50 40 70 90 80 60 30 
+	 * == æœ€å°å€¼: 10
+	 * == æœ€å¤§å€¼: 90
+	 * == æ ‘çš„è¯¦ç»†ä¿¡æ¯: 
+	 * 30(B) is root
+	 * 10(B) is 30's   left child
+	 * 20(R) is 10's  right child
+	 * 60(R) is 30's  right child
+	 * 40(B) is 60's   left child
+	 * 50(R) is 40's  right child
+	 * 80(B) is 60's  right child
+	 * 70(R) is 80's   left child
+	 * 90(R) is 80's  right child
+	 * 	*/
 	RBTree* tree = new RBTree;
 	RBTreeNode* root = NULL;
 	tree->insertNode(root, 10);
