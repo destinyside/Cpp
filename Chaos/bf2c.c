@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	    printf("file error\n");
 	    return 0;
 	}
-	while((code[p++]=fgetc(fp))!=EOF);{//读取脚本文件
+	while((code[p++]=fgetc(fp))!=EOF);{
 	    len=strlen(code)-1;
 	}
 	words = code;
