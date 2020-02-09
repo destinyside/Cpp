@@ -7,7 +7,7 @@
  */
 int main(int argc, char* argv[]){
     char* words = "++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.";
-    char* code = malloc(sizeof(char) * 5000);
+    char* code = malloc(sizeof(char) * 30000);
     if(argc >= 1){
 	char* file_name = argv[1];
 	int len = 0,p = 0;

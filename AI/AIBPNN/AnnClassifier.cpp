@@ -107,17 +107,14 @@ void AnnClassifier::forward(vector<double> lst)
 
 void AnnClassifier::backward(int type)
 {
-	// 输出层
 	for (int j = 0; j < outputCount; j++)
 	{
-		// 输出层计算误差把误差反向传播，这里-1代表不属于，1代表属于
 		double result = -1;
 		if (j == type)
 			result = 1;
 		outputNodes.at(j)->setBackwardInputValue(
 			outputNodes.at(j)->getForwardOutputValue() - result);
 	}
-	// 隐层
 	for (int j = 0; j < hiddenCount; j++)
 	{
 		double temp = 0;

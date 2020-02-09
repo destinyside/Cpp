@@ -18,10 +18,10 @@ public:
 	}
 
 	AVLNode* LLRotate(AVLNode* &p) {
-		//LL�Ͳ�ƽ�⣬
-		//ʹp������Ϊ�µĸ���㣬
-		//p���ӵ��Һ��ӳ�Ϊp������
-		//p��Ϊp���ӵ��Һ��ӣ�   
+		//LLÐÍ²»Æ½ºâ£¬
+		//Ê¹pµÄ×óº¢×ÓÎªÐÂµÄ¸ù½áµã£¬
+		//p×óº¢×ÓµÄÓÒº¢×Ó³ÉÎªpµÄ×óº¢×Ó
+		//p³ÉÎªp×óº¢×ÓµÄÓÒº¢×Ó£¬   
 
 		AVLNode* lc = p->lchild;
 		p->lchild = lc->rchild;
@@ -33,8 +33,8 @@ public:
 
 	}
 	AVLNode* RRRotate(AVLNode* &p) {
-		//RR�Ͳ�ƽ��
-		//��LL�෴
+		//RRÐÍ²»Æ½ºâ
+		//ÓëLLÏà·´
 		//
 
 		AVLNode* rc = p->rchild;
@@ -46,16 +46,16 @@ public:
 		return rc;
 	}
 	AVLNode* LRRotate(AVLNode* &p) {
-		//LR�Ͳ�ƽ��
-		//p����ΪRR�Ͳ�ƽ��
+		//LRÐÍ²»Æ½ºâ
+		//p×óº¢×ÓÎªRRÐÍ²»Æ½ºâ
 
 		p->lchild = RRRotate(p->lchild);
 		p = LLRotate(p);
 		return p;
 	}
 	AVLNode* RLRotate(AVLNode* &p) {
-		//RL�Ͳ�ƽ��
-		//p�Һ���ΪLL�Ͳ�ƽ��
+		//RLÐÍ²»Æ½ºâ
+		//pÓÒº¢×ÓÎªLLÐÍ²»Æ½ºâ
 
 		p->rchild = LLRotate(p->rchild);
 		p = RRRotate(p);
