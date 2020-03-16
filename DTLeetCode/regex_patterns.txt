@@ -1,0 +1,12 @@
+aa
+a
+ab
+a*
+ab
+a?
+aaabababbabababababa
+*
+bbbba
+*a
+bbbba
+*b
