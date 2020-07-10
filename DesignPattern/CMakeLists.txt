@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.5)
+
+IF (CMAKE_HOST_WIN32)
+        MESSAGE(STATUS "current platform: Windows")
+        SET(CMAKE_C_COMPILER "I:/MSYS2/mingw64/bin/gcc.exe")
+        SET(CMAKE_CXX_COMPILER "I:/MSYS2/mingw64/bin/g++.exe")
+ENDIF()
+
+project(DesignPattern LANGUAGES C CXX)
+
+add_subdirectory(AbstractFactory)
+add_subdirectory(Adapter)
+add_subdirectory(Bridge)
+add_subdirectory(Builder)
+add_subdirectory(ChainOfResponsibility)
+add_subdirectory(Command)
+add_subdirectory(Composite)
+add_subdirectory(Decorator)
+add_subdirectory(Facade)
+add_subdirectory(FactoryMethod)
+add_subdirectory(Interpreter)
+add_subdirectory(Iterator)
+add_subdirectory(Mediator)
+add_subdirectory(Observer)
+add_subdirectory(Prototype)
+add_subdirectory(Proxy)
+add_subdirectory(Singleton)
+

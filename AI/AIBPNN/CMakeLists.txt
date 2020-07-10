@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.5)
 
 set(PROJ AIBPNN)
 set(SRCS AnnClassifier.h  DataNode.h  Neuron.h AnnClassifier.cpp  Client.cpp  DataNode.cpp  Neuron.cpp)

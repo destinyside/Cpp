@@ -2,7 +2,7 @@
 #include<ctime>
 using namespace std;
 int* merge(int* &a, int* &b, int lena, int lenb) {
-	//ºÏ²¢Á½¸öÒÑ¾­ÓĞĞòµÄÊı×é
+	//åˆå¹¶ä¸¤ä¸ªå·²ç»æœ‰åºçš„æ•°ç»„
 
 	int index = 0;
 	int i = 0;
@@ -55,7 +55,7 @@ void mergesort(int* &p, int len, int step) {
 }
 
 int* randomArray(int len) {
-    //Ëæ»úÉú³ÉÊı×é
+    //éšæœºç”Ÿæˆæ•°ç»„
 
 	srand((unsigned)time(0));
 	int* tmp = new int[len] {0};

@@ -53,7 +53,7 @@ int AnnClassifier::test(DataNode dn)
 	forward(dn.getAttrList());
 	double result = 2;
 	int type = 0;
-	// È¡×î½Ó½ü1µÄ
+	// å–æœ€æ¥è¿‘1çš„
 	for (int i = 0; i < outputCount; i++)
 		if ((1 - outputNodes.at(i)->getForwardOutputValue()) < result)
 		{

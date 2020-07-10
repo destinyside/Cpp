@@ -8,13 +8,13 @@ enum NodeType {
 	Node_Output
 };
 class Neuron {
-	//½áµãÀàĞÍ
+	//ç»“ç‚¹ç±»å‹
 	NodeType type;
 	
-	//½áµãÏòÇ°Êä³öÖµ
+	//ç»“ç‚¹å‘å‰è¾“å‡ºå€¼
 	double forwardInputValue;
 	double forwardOutputValue;
-	//½áµãÏòºóÊä³öÖµ
+	//ç»“ç‚¹å‘åè¾“å‡ºå€¼
 	double backwardInputValue;
 	double backwardOutputValue;
 public:
@@ -37,11 +37,11 @@ private:
 	void setBackwardOutputValue(double backwardInputValue);
 
 	double tanhS(double in);
-	//sigmoid º¯Êı
+	//sigmoid å‡½æ•°
 	double forwardSigmoid(double in);
 
 	double tanhSDerivative(double in);
-	//Îó²î·´Ïò´«²¥£¬¼¤»îº¯ÊıµÄµ¼Êı
+	//è¯¯å·®åå‘ä¼ æ’­ï¼Œæ¿€æ´»å‡½æ•°çš„å¯¼æ•°
 	double backwardPropagate(double in);
 
 

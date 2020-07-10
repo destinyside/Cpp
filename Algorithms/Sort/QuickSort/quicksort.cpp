@@ -6,7 +6,7 @@ void quicksort(int* p, int left, int right) {
 	if (left > right) {
 		return;
 	}
-	int sign = p[left];//Ñ¡Ôñ»ù×¼
+    int sign = p[left];
 	int i = left;
 	int j = right;
 	while (i != j) {
@@ -16,8 +16,7 @@ void quicksort(int* p, int left, int right) {
 		if (j > i) {
 			p[i] = p[j];
 		}
-		while (sign >= p[i] && i < j) {
-			//Óöµ½²»Âú×ãµÄÊý¾ÍÍ£Ö¹Ñ­»·£¬½Ó×Å½øÐÐ½»»»
+        while (sign >= p[i] && i < j) {
 			i++;
 		}
 		if(i < j){
@@ -32,8 +31,6 @@ void quicksort(int* p, int left, int right) {
 }
 
 int* randomArray(int len) {
-	//Ëæ»úÉú³ÉÊý×é
-
 	srand((unsigned)time(0));
 	int* tmp = new int[len] {0};
 	for (int i = 0; i < len; i++) {

@@ -15,12 +15,12 @@ int main() {
 	//int ****i4 = &i3;
 	//std::cout << i0 << i1 << i2 << i3 << i4 << *i1 << **i2 << ***i3 << ****i4 << std::endl;
 
-	std::cerr << "´íÎó£¬×Ô¶¯Òý·¢µÄ´íÎó£¡" << std::endl;
+	std::cerr << "é”™è¯¯ï¼Œè‡ªåŠ¨å¼•å‘çš„é”™è¯¯ï¼" << std::endl;
 	int j = 0;
 	cout << (++ j) ++ << endl;
 	cout << j << endl;
 	int value, sum = 0;
-	while (std::cin>>value)//CTRL+Z ÊäÈë½áÊø
+	while (std::cin>>value)//CTRL+Z
 	{
 		sum += value;
 		if (value == 0) {

@@ -2,13 +2,13 @@
 #include<ctime>
 using namespace std;
 
-//ÈÎºÎÒ»·ÇÒ¶½ÚµãµÄ¹Ø¼ü×Ö²»´óÓÚ»òÕß²»Ğ¡ÓÚÆä×óÓÒº¢×Ó½ÚµãµÄ¹Ø¼ü×Ö¡£
+//ä»»ä½•ä¸€éå¶èŠ‚ç‚¹çš„å…³é”®å­—ä¸å¤§äºæˆ–è€…ä¸å°äºå…¶å·¦å³å­©å­èŠ‚ç‚¹çš„å…³é”®å­—ã€‚
 
-void HeapAdjust(int* &a, int i, int size)  {//µ÷Õû¶Ñ  
-	int lchild = 2 * i;       //iµÄ×óº¢×Ó½ÚµãĞòºÅ 
-	int rchild = 2 * i + 1;     //iµÄÓÒº¢×Ó½ÚµãĞòºÅ 
-	int max = i;            //ÁÙÊ±±äÁ¿ 
-	if (i <= size / 2)          //Èç¹ûi²»ÊÇÒ¶½Úµã¾Í²»ÓÃ½øĞĞµ÷Õû 
+void HeapAdjust(int* &a, int i, int size)  {//è°ƒæ•´å †  
+	int lchild = 2 * i;       //içš„å·¦å­©å­èŠ‚ç‚¹åºå· 
+	int rchild = 2 * i + 1;     //içš„å³å­©å­èŠ‚ç‚¹åºå· 
+	int max = i;            //ä¸´æ—¶å˜é‡ 
+	if (i <= size / 2)          //å¦‚æœiä¸æ˜¯å¶èŠ‚ç‚¹å°±ä¸ç”¨è¿›è¡Œè°ƒæ•´ 
 	{
 		if (lchild <= size&&a[lchild]>a[max])
 		{
@@ -21,34 +21,34 @@ void HeapAdjust(int* &a, int i, int size)  {//µ÷Õû¶Ñ
 		if (max != i)
 		{
 			swap(a[i], a[max]);
-			HeapAdjust(a, max, size);    //±ÜÃâµ÷ÕûÖ®ºóÒÔmaxÎª¸¸½ÚµãµÄ×ÓÊ÷²»ÊÇ¶Ñ 
+			HeapAdjust(a, max, size);    //é¿å…è°ƒæ•´ä¹‹åä»¥maxä¸ºçˆ¶èŠ‚ç‚¹çš„å­æ ‘ä¸æ˜¯å † 
 		}
 	}
 }
 
 void HeapSort(int* &a, int n)
 {
-	//ÏÈ½¨Á¢´ó¶¥¶Ñ
+	//å…ˆå»ºç«‹å¤§é¡¶å †
 	for (int i = n / 2; i >= 0; --i)
 	{
 		HeapAdjust(a, i, n);
 	}
-	////½øĞĞÅÅĞò
+	////è¿›è¡Œæ’åº
 	for (int i = n-1; i > 0; --i)
 	{
-		//×îºóÒ»¸öÔªËØºÍµÚÒ»ÔªËØ½øĞĞ½»»»
+		//æœ€åä¸€ä¸ªå…ƒç´ å’Œç¬¬ä¸€å…ƒç´ è¿›è¡Œäº¤æ¢
 		int temp = a[i];
 		a[i] = a[0];
 		a[0] = temp;
 
-		//È»ºó½«Ê£ÏÂµÄÎŞĞòÔªËØ¼ÌĞøµ÷ÕûÎª´ó¶¥¶Ñ
+		//ç„¶åå°†å‰©ä¸‹çš„æ— åºå…ƒç´ ç»§ç»­è°ƒæ•´ä¸ºå¤§é¡¶å †
 		HeapAdjust(a, 0, i - 1);
 	}
 }
 
 
 int* randomArray(int len) {
-	//Ëæ»úÉú³ÉÊı×é
+	//éšæœºç”Ÿæˆæ•°ç»„
 
 	srand((unsigned)time(0));
 	int* tmp = new int[len] {0};
