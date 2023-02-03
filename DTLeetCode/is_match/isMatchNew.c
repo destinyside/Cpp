@@ -1,30 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include<stdbool.h>
 
 
 bool isMatch(char * s, char * p){
-	if(!s || *s == '\0'){
-
-	}
-	if(!p || *p == '\0'){
-
-	}
-	if(*s=='\0' && *p=='\0'){
-		return true;
-	} else {
-		if(*s!=*p){
-			if(*p=='?'){
-				return isMatch(++s,++p);
-			} else if(*p=='*'){
-				return isMatch(++s,p);
-			} else {
-				return false;
-			}
-		} else {
-			return isMatch(++s,++p);
+	int slen = strlen(s);
+	int plen = strlen(p);
+	bool dp[slen][plen];
+	for(int i=0; i<slen; i++){
+		for(int j=0; j<plen; j++){
+			dp[i][j] = false;
 		}
 	}
+	
+	return dp[slen-1][plen-1];
 }
 
 void t(char* s, char* p){
